@@ -20,8 +20,8 @@
               <td><%= project.name %></td>
               <td>3500 seconds</td>
               <td class="text-right">
-                <span class="glyphicon glyphicon-edit"></span><%= link_to 'Edit', edit_project_path(project), remote: true %>
-                <span class="glyphicon glyphicon-remove"></span><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_project_path(project), remote: true %>
+                <%= link_to '<span class="glyphicon glyphicon-remove"></span> Destroy'.html_safe, project, method: :delete, data: { confirm: 'Are you sure?' } %>
               </td>
             </tr>
             <% end %>

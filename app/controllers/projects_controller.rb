@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_tab
+  before_action :authenticate_user!
 
   # GET /projects
   # GET /projects.json
@@ -54,6 +56,11 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
     end
+  end
+
+  # Define an action that will set the active class in the navbar
+  def set_tab
+    @tab = :project
   end
 
   private
