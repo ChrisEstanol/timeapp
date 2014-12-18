@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'pages/home'
+
+  get 'pages/dashboard'
+
   devise_for :users
   resources :projects
 
