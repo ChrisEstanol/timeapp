@@ -1,0 +1,8 @@
+<tr id="<%= @project.id %>">
+  <td><%= @project.name %></td>
+  <td>3500 seconds</td>
+  <td class="text-right">
+    <span class="glyphicon glyphicon-edit"></span><%= link_to 'Edit', edit_project_path(@project), remote: true %>
+    <span class="glyphicon glyphicon-remove"></span><%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </td>
+</tr>
