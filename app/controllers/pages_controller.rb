@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @projects = Project.all
+    @activities = Activity.all
   end
 
   # Define an action that will set the active class in the navbar
@@ -15,3 +16,15 @@ class PagesController < ApplicationController
   end
 
 end
+
+
+
+
+  # def create
+  #   @article = current_user.articles.build(article_params)
+  #   @article.user_id = current_user.id
+
+  #   @article.save
+  #   render 'create'
+
+  # end

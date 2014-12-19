@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @project = current_user.projects.build
   end
 
   # GET /projects/1/edit
@@ -26,16 +26,14 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.build(project_params)
+    @project.user_id = current_user.id
 
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to projects_path, notice: 'Project was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+    @project.save
+    redirect_to projects_path, notice: 'Project was successfully created.'
   end
+
+
 
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
@@ -52,11 +50,14 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+    @project = Project.find(params[:id])
     @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
-    end
+    @project.user_id = current_user.id
+
+    redirect_to projects_path, notice: 'Project was successfully destroyed.'
+
   end
+
 
   # Define an action that will set the active class in the navbar
   def set_tab

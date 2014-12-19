@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :projects
+  resources :activities
 
   root 'projects#index'
 
