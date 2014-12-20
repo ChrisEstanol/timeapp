@@ -27,8 +27,6 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = current_user.projects.build(project_params)
-    @project.user_id = current_user.id
-
     @project.save
     redirect_to projects_path, notice: 'Project was successfully created.'
   end
@@ -51,9 +49,8 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.json
   def destroy
     @project = Project.find(params[:id])
-    @project.destroy
-    @project.user_id = current_user.id
 
+    @project.destroy
     redirect_to projects_path, notice: 'Project was successfully destroyed.'
 
   end
