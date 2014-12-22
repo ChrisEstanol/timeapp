@@ -4,7 +4,7 @@
       <div class="col-sm-12 activity-form">
         <div class="row">
           <div class="form-group col-sm-3">
-            <%= collection_select(:project, :project_id, Project.all, :id, :name, :class => 'form-control') %>
+            <%= collection_select(:project, :project_id, @projects, :id, :name, {prompt: "Select a project"}, {:class => 'form-control'}) %>
           </div>
           <%= form_for(@activity, remote: true) do |f| %>
             <div class="form-group col-sm-8">

@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @projects = Project.all
+    @projects = current_user.projects
     @activities = Activity.all
 
     @activity = Activity.new
@@ -16,6 +16,7 @@ class PagesController < ApplicationController
   def set_tab
     @tab = :dashboard
   end
+
 
 end
 
