@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   before_action :set_tab
   before_action :authenticate_user!
 
+
   # GET /projects
   # GET /projects.json
   def index
@@ -27,8 +28,11 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = current_user.projects.build(project_params)
-    @project.save
-    redirect_to projects_path, notice: 'Project was successfully created.'
+    if @project.save
+      redirect_to projects_path, notice: 'Project was successfully created.'
+    else
+      redirect_to projects_path, notice: 'You need a name for your project.'
+    end
   end
 
 
@@ -38,9 +42,9 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to projects_path, notice: 'Project was successfully updated.' }
+        redirect_to projects_path, notice: 'Project was successfully updated.'
       else
-        format.html { render :edit }
+        render :edit
       end
     end
   end
