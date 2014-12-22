@@ -16,6 +16,7 @@
           </thead>
           <tbody id="#addProject">
           <% @projects.each do |project| %>
+          <% if project.user == current_user %>
             <tr id="<%= project.id %>">
               <td><%= project.name %></td>
               <td>3500 seconds</td>
@@ -24,6 +25,7 @@
                 <%= link_to '<span class="glyphicon glyphicon-remove"></span> Destroy'.html_safe, project, method: :delete, data: { confirm: 'Are you sure?' } %>
               </td>
             </tr>
+            <% end %>
             <% end %>
           </tbody>
         </table>
