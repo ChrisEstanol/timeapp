@@ -4,24 +4,22 @@
   <title>Timeapp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-
   <%= render 'layouts/header' %>
 
-
-
   <% flash.each do |name, msg| %>
-    <%= content_tag(:div, msg, class: "alert alert-success") %>
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <%= msg %>
+    </div>
   <% end %>
 
   <%= yield %>
 
-
-
-
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

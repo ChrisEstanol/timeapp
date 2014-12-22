@@ -11,7 +11,7 @@
               <%= f.text_field :description, autofocus: true, class: "form-control" %>
             </div>
             <div class="col-sm-1">
-              <%= f.submit "Start" ,class: "btn btn-success" %>
+              <%= f.submit "Start" ,class: "btn btn-success", id: "add-activity" %>
             </div>
           <% end %>
         </div>
@@ -29,13 +29,7 @@
         </thead>
 
         <tbody>
-        <%= @activities.each do |activity| %>
-          <tr>
-            <td><% .name %></td>
-            <td><% .description%></td>
-            <td class="text-center">3500</td>
-          </tr>
-        <% end %>
+
         </tbody>
       </table>
     </div>
