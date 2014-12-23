@@ -29,7 +29,13 @@
         </thead>
 
         <tbody>
-
+          <%= @activities.each do |activity| %>
+            <tr>
+              <td><%= activity.project.name %></td>
+              <td><%= activity.description %></td>
+              <td class="text-center"><%= activity.calc_time %> seconds</td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
