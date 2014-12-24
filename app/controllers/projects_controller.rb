@@ -29,9 +29,11 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(project_params)
     if @project.save
-      redirect_to projects_path, notice: 'Project was successfully created.'
+      flash[:success] = 'Project was successfully created.'
+      redirect_to projects_path
     else
-      redirect_to projects_path, notice: 'You need a name for your project.'
+      flash[:error] = 'You need a name for your project.'
+      redirect_to projects_path
     end
   end
 

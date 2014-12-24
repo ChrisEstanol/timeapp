@@ -6,9 +6,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @projects = current_user.projects
     @activities = Activity.all
-
     @activity = Activity.new
   end
 

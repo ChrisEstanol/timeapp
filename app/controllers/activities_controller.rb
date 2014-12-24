@@ -1,13 +1,12 @@
 class ActivitiesController < ApplicationController
 
+
   def create
     @activity = Activity.new(activity_params)
     @activity.started_at = DateTime.now
-    if @activity.save
-      redirect_to dashboard_path
-    else
-      render "index"
-    end
+    @activity.save
+
+      render 'create'
   end
 
   def edit
@@ -15,19 +14,22 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity = Activity.find(params[:id])
-    @activity.update_attributes(set_params)
+    @activity.update_attributes(activity_params)
     @activity.ended_at = DateTime.now
     if @activity.save
-      redirect_to dashboard_path
+
+      redirect_to pages_dashboard_path
+      flash[:success] = 'New Activity created.'
     else
-      render "index"
+      redirect_to activities_path
     end
   end
+
 
   private
 
     def activity_params
-      params.require(:activity).permit(:description)
+      params.require(:activity).permit(:description, :project_id)
     end
 
 end

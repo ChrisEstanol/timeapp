@@ -2,18 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 activity-form">
-        <div class="row">
-          <div class="form-group col-sm-3">
-            <%= collection_select(:project, :project_id, @projects, :id, :name, {prompt: "Select a project"}, {:class => 'form-control'}) %>
-          </div>
-          <%= form_for(@activity, remote: true) do |f| %>
-            <div class="form-group col-sm-8">
-              <%= f.text_field :description, autofocus: true, class: "form-control" %>
-            </div>
-            <div class="col-sm-1">
-              <%= f.submit "Start" ,class: "btn btn-success", id: "add-activity" %>
-            </div>
-          <% end %>
+        <div class="row" id="activity-form">
+          <%= render 'activities/form_create' %>
         </div>
       </div>
     </div>
@@ -28,8 +18,8 @@
           </tr>
         </thead>
 
-        <tbody>
-          <%= @activities.each do |activity| %>
+        <tbody id="addActivity">
+          <% @activities.each do |activity| %>
             <tr>
               <td><%= activity.project.name %></td>
               <td><%= activity.description %></td>

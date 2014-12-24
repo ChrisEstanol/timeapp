@@ -15,4 +15,8 @@ module ApplicationHelper
     end
   end
 
+  def user_projects
+    current_user.projects
+  end
+
 end
